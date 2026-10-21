@@ -7,4 +7,4 @@ on:
 
 jobs:
   build:
-    uses: geode-sdk/build-geode-mod/.github/workflows/build.yml@v2
+    uses: geode-sdk/build-geode-mod/.github/workflows/build.yml@v1
