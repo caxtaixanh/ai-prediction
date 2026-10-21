@@ -5,9 +5,9 @@ set(CMAKE_CXX_VISIBILITY_PRESET hidden)
 
 project(PredictiveInputBuffer VERSION 1.0.0)
 
-# Tắt kiểm tra định dạng nghiêm ngặt của FMT
-add_definitions(-DFMT_ENFORCE_COMPILE_STRING=0)
-add_definitions(-DFMT_HEADER_ONLY)
+# Ghim phiên bản fmt về 9.1.0 để tránh lỗi biên dịch khắt khe của bản 10.x
+set(CPM_fmt_VERSION 9.1.0)
+set(fmt_VERSION 9.1.0)
 
 # Geode SDK
 if(NOT DEFINED ENV{GEODE_SDK})
