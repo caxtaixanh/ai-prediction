@@ -5,9 +5,9 @@ set(CMAKE_CXX_VISIBILITY_PRESET hidden)
 
 project(PredictiveInputBuffer VERSION 1.0.0)
 
-# Vô hiệu hóa hoàn toàn hàm kiểm tra FMT_STRING gây lỗi biên dịch trên Android
-add_definitions("-DFMT_STRING(x)=x")
+# Cấu hình an toàn cho thư viện fmt trên Android
 add_definitions(-DFMT_HEADER_ONLY)
+add_definitions(-DFMT_ENFORCE_COMPILE_STRING=0)
 
 # Geode SDK
 if(NOT DEFINED ENV{GEODE_SDK})
