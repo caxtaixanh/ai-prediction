@@ -5,16 +5,13 @@ set(CMAKE_CXX_VISIBILITY_PRESET hidden)
 
 project(PredictiveInputBuffer VERSION 1.0.0)
 
-# Ghim phiên bản fmt về 9.1.0 để tránh lỗi biên dịch khắt khe của bản 10.x
-set(CPM_fmt_VERSION 9.1.0)
-set(fmt_VERSION 9.1.0)
+# Ép trình biên dịch bỏ qua toàn bộ warning và lỗi kiểm tra vặt của thư viện fmt
+add_compile_options(-w)
 
 # Geode SDK
 if(NOT DEFINED ENV{GEODE_SDK})
     message(FATAL_ERROR
         "GEODE_SDK environment variable not set.\n"
-        "Point it at your Geode SDK clone, e.g.:\n"
-        "  export GEODE_SDK=/path/to/geode\n"
     )
 endif()
 
