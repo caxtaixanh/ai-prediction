@@ -5,11 +5,6 @@ set(CMAKE_CXX_VISIBILITY_PRESET hidden)
 
 project(PredictiveInputBuffer VERSION 1.0.0)
 
-# Cấu hình bắt buộc để vô hiệu hóa lỗi biên dịch khắt khe của thư viện fmt trên Android NDK
-set(FMT_HEADER_ONLY ON CACHE BOOL "" FORCE)
-add_definitions(-DFMT_HEADER_ONLY)
-add_definitions(-DFMT_ENFORCE_COMPILE_STRING=0)
-
 # ── Geode SDK ─────────────────────────────────────────────────────────────────
 if(NOT DEFINED ENV{GEODE_SDK})
     message(FATAL_ERROR
@@ -28,5 +23,8 @@ add_library(${PROJECT_NAME} SHARED ${SOURCES})
 
 target_include_directories(${PROJECT_NAME} PRIVATE src)
 target_link_libraries(${PROJECT_NAME} geode-sdk)
+
+# Ép vô hiệu hóa kiểm tra khắt khe của FMT_STRING và consteval trên Android
+target_compile_definitions(${PROJECT_NAME} PRIVATE "FMT_STRING(s)=s" FMT_USE_CONSTEVAL=0)
 
 setup_geode_mod(${PROJECT_NAME})
