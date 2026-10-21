@@ -4,6 +4,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_VISIBILITY_PRESET hidden)
 
 project(PredictiveInputBuffer VERSION 1.0.0)
+add_definitions(-DFMT_USE_CONSTEVAL=0)
 
 # Ép trình biên dịch bỏ qua toàn bộ warning và lỗi kiểm tra vặt của thư viện fmt
 add_compile_options(-w)
