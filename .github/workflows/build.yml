@@ -7,5 +7,4 @@ on:
 
 jobs:
   build:
-    uses: geode-sdk/build-geode-mod/.github/workflows/build.yml@main
-concurrency: 
+    uses: geode-sdk/build-geode-mod/.github/workflows/build.yml@v2
