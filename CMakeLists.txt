@@ -5,11 +5,12 @@ set(CMAKE_CXX_VISIBILITY_PRESET hidden)
 
 project(PredictiveInputBuffer VERSION 1.0.0)
 
-# Ép thư viện fmt chạy ở chế độ Header-Only để tránh biên dịch các tệp nguồn lỗi trên Android NDK
+# Cấu hình bắt buộc để vô hiệu hóa lỗi biên dịch khắt khe của thư viện fmt trên Android NDK
 set(FMT_HEADER_ONLY ON CACHE BOOL "" FORCE)
 add_definitions(-DFMT_HEADER_ONLY)
+add_definitions(-DFMT_ENFORCE_COMPILE_STRING=0)
 
-# Geode SDK
+# ── Geode SDK ─────────────────────────────────────────────────────────────────
 if(NOT DEFINED ENV{GEODE_SDK})
     message(FATAL_ERROR
         "GEODE_SDK environment variable not set.\n"
@@ -20,7 +21,7 @@ endif()
 
 add_subdirectory($ENV{GEODE_SDK} ${CMAKE_CURRENT_BINARY_DIR}/geode)
 
-# Sources
+# ── Sources ───────────────────────────────────────────────────────────────────
 file(GLOB_RECURSE SOURCES src/*.cpp)
 
 add_library(${PROJECT_NAME} SHARED ${SOURCES})
