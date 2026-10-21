@@ -5,7 +5,8 @@ set(CMAKE_CXX_VISIBILITY_PRESET hidden)
 
 project(PredictiveInputBuffer VERSION 1.0.0)
 
-# Định nghĩa FMT_HEADER_ONLY để tránh lỗi biên dịch fmt
+# Tắt kiểm tra định dạng nghiêm ngặt của FMT
+add_definitions(-DFMT_ENFORCE_COMPILE_STRING=0)
 add_definitions(-DFMT_HEADER_ONLY)
 
 # Geode SDK
